@@ -1,0 +1,13 @@
+let ifPositive
+    : ∀(a : Type) → (Natural → a) → (Natural → a) → Integer → a
+    =   λ(a : Type)
+      → λ(true : Natural → a)
+      → λ(false : Natural → a)
+      → λ(i : Integer)
+      →       if Natural/isZero (Integer/clamp i)
+
+        then  false (Integer/clamp (Integer/negate i))
+
+        else  true (Integer/clamp i)
+
+in  ifPositive
